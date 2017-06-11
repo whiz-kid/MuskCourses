@@ -1,5 +1,5 @@
 <div class="row" id="signup">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-sm-6 col-sm-offset-3">
         <h1 class="text-center page-header" style="color:crimson">Sign up</h1>
         {{# if hasErrors}}
             <div class="alert alert-danger">
@@ -11,15 +11,16 @@
         <form action="/user/signup" method="post">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" class="form-control">
+                <input type="email" name="email" class="form-control">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" class="form-control">
+                <input type="password" name="password" class="form-control">
             </div>
             <input type="hidden" name="_csrf" value="{{csrfToken}}">
-            <button class="btn btn-success col-md-4 col-md-offset-4">Sign Up</button>&nbsp;
-             <h3>If already a member,Login<a href="/user/signin"> here</a></h3>
+            <div class="form-group">
+                <input type="submit" name="submit" class="form-control btn btn-success">
+            </div>
              <h3 class="text-center">or</h3>
             <a class="btn btn-block btn-social btn-facebook" href="/auth/facebook " style="margin-top:20px;">
                  <span class="fa fa-facebook"></span> Sign up with Facebook

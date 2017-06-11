@@ -1,1 +1,88 @@
-<h1>User Profile</h1>
+<div class="row" style="margin-top:100px;">
+
+    <div class="col-md-3 col-md-offset-4">   
+        <img src="/images/user.png" alt="">
+    </div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<div class="row">
+
+    <div class="col-md-offset-2 ">
+		
+
+		<div class="container-fluid bg-3">    
+			<h2 style="color:blueviolet;font-family:cursive">Courses Offered By You</h2><br>
+
+			{{# each course}}
+			<div class="row">
+
+			{{# each this}}
+				<div class="col-sm-3">
+					<div class="thumbnail" style="height:440px;">
+						<a href="/course/details/{{this.id}}" style="text-decoration:none;">
+							<img src="/{{this.courseLogo}}" class="img-responsive" style="width:100%;" alt="Image">
+							<br>
+							<div class="caption">
+								<p>Course Name : {{this.courseName}}</p>
+								<p>Course Type : {{this.type}}</p>
+								<p>Price : {{this.price}}$</p>
+								<p>Course Duration : {{this.period}} Months</p>
+								<p>Course Instructor : {{this._offeredBy}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			{{/each}}
+				
+			</div>
+			{{/each}}
+			
+		</div><br>
+
+	</div>
+
+</div>
+
+
+</div>
+
+<br><br><br><br>
+<div class="row" id="profile">
+    <div class="col-md-6 col-md-offset-3">
+        <h1  class="text-center" style="color:crimson;font-family:cursive">Want to offer new Course</h1><br>
+        <form action="/user/profile" method="post">
+            <div class="form-group">
+                <label for="coursename">Course Name</label>
+                <input type="text"  name="coursename" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="price">Price (In Dollars)</label>
+                <input type="text"  name="price" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="period">Period (In Months)</label>
+                <input type="text"  name="period" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="coursedetails">Details</label>
+                <textarea name="coursedetails" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="type">Course Type</label>
+                <input list="courses" name="type" class="form-control">
+                <datalist id="courses">
+                    <option value="Web Development">
+                    <option value="App Development">
+                    <option value="Computer Security">
+                    <option value="Machine Learning">
+                </datalist>
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <div class="form-group">
+                <input type="submit" name="submit" class="form-control btn btn-success">
+            </div>
+            
+        </form>
+    </div>
+</div>

@@ -2,10 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 var findOrCreate = require('mongoose-findorcreate')
+var Course = require('./course')
 
 var userSchema = Schema({
     email:{type:String},
-    password:{type:String}
+    password:{type:String},
+    courseOffered:[{type:Schema.Types.ObjectId,ref:'Course'}]
 });
 
 userSchema.plugin(findOrCreate);

@@ -10,7 +10,8 @@ var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
-
+require('./models/user');
+require('./models/course');
 var index = require('./routes/index');
 
 var app = express();
@@ -33,6 +34,15 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(function(req,res,next){
+  res.locals.login = req.isAuthenticated();
+  if(req.isAuthenticated()){
+    res.locals.customer = req.user;
+  };
+  next();
+});
 
 app.use('/', index);
 

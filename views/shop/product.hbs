@@ -1,0 +1,37 @@
+<div class="row" style="margin-top:10px;">
+
+    <div class="col-md-3 col-md-offset-1" >
+
+        <img src="/{{course.courseLogo}}" class="img-responsive"
+         style="width:100%;height:450px;border:4px solid silver;margin-top:60px;" alt="Image">
+         <br><br>
+         <button class="btn btn-info">${{course.price}}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <button class="btn btn-info">Add to Cart</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <button class="btn btn-info">Buy Now</button>
+
+    </div>
+
+    <div class="col-md-6 col-md-offset-1 ">
+
+        <h2 class="page-header text-center">
+            Course Overview
+        </h2>
+
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info">Course Name : {{course.courseName}}</li>
+            <li class="list-group-item list-group-item-success">Course Type : {{course.type}}</li>
+            <li class="list-group-item list-group-item-warning">Price : ${{course.price}}</li>
+            <li class="list-group-item list-group-item-danger">Course Duration : {{course.period}} Months</li>
+            <li class="list-group-item list-group-item-success">Course Instructor : {{course._offeredBy}}</li>
+
+        </ul>
+        <h2 class="page-header text-center">
+            Course Details
+        </h2>
+        <p style="color:maroon;font-family:cursive;font-size:16px;">{{course.courseDetails}}</p>
+
+    </div>
+
+
+
+</div>

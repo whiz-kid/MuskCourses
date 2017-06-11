@@ -1,5 +1,125 @@
-<div class="conatiner">
-	<h1>{{title}}</h1>
-	<p>Welcome to {{title}}</p>
-</div>
+<div class="row">
+	<div class="col-md-2">
 
+		<div class="sidenav">
+
+			<img src="/images/user.png" alt="" class="img-circle img-responsive">
+			<ul class="list-group" style="margin-top:40px;margin-left:20px;">
+				<li class="list-group-item list-group-item-info"><a href="#">Some Filter</a>
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</li>
+				<br>
+				<li class="list-group-item list-group-item-info"><a href="#">Some Filter</a>
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</li>
+				<br>
+				<li class="list-group-item list-group-item-info"><a href="#">Some Filter</a>
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</li>
+			</ul>
+
+		</div>
+
+	</div>
+
+	<div class="col-md-10 col-md-offset-2">
+		
+
+		<div class="container-fluid bg-3 text-center">    
+			<h3>Available Courses</h3><br>
+
+			<div class="row">
+
+				<div class="col-sm-3">
+					<div class="thumbnail" style="height:300px;">
+						<a href="/course/1" style="text-decoration:none;">
+							<img src="images/web.jpg" class="img-responsive" style="width:100%;" alt="Image">
+							<br>
+							<div class="caption">
+								<p>Course Type : Web Development</p>
+								<p>Number Of Courses Available : {{total.web}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="thumbnail" style="height:300px;">
+						<a href="/course/2" style="text-decoration:none;">
+							<img src="images/app.jpg" class="img-responsive" style="width:100%;" alt="Image">
+							<br>
+							<div class="caption">
+								<p>Course Type : App Development</p>
+								<p>Number Of Courses Available : {{total.app}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="thumbnail" style="height:300px;">
+						<a href="/course/3" style="text-decoration:none;">
+							<img src="images/security.jpg" class="img-responsive" style="width:100%;" alt="Image">
+							<br>
+							<div class="caption">
+								<p>Course Type : Computer Security</p>
+								<p>Number Of Courses Available : {{total.security}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-sm-3">
+					<div class="thumbnail" style="height:300px;">
+						<a href="/course/4" style="text-decoration:none;">
+							<img src="images/web.jpg" class="img-responsive" style="width:100%;" alt="Image">
+							<br>
+							<div class="caption">
+								<p>Course Type : Machine Learning</p>
+								<p>Number Of Courses Available : {{total.machine}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div><br>
+
+	</div>
+
+	<div class="col-md-10 col-md-offset-2 ">
+		
+
+		<div class="container-fluid bg-3 text-center">    
+			<h3>Recent Courses</h3><br>
+
+			{{# each course}}
+			<div class="row">
+
+			{{# each this}}
+				<div class="col-sm-3">
+					<div class="thumbnail" style="height:430px;">
+						<a href="/course/details/{{this.id}}" style="text-decoration:none;">
+							<img src="{{this.courseLogo}}" class="img-responsive" style="width:100%;" alt="Image">
+							<br>
+							<div class="caption">
+								<p>Course Name : {{this.courseName}}</p>
+								<p>Course Type : {{this.type}}</p>
+								<p>Price : {{this.price}}$</p>
+								<p>Course Duration : {{this.period}} Months</p>
+								<p>Course Instructor : {{this._offeredBy}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			{{/each}}
+				
+			</div>
+			{{/each}}
+			
+		</div><br>
+
+	</div>
+
+</div>
