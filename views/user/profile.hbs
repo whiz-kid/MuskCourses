@@ -19,16 +19,15 @@
 
 			{{# each this}}
 				<div class="col-sm-3">
-					<div class="thumbnail" style="height:440px;">
+					<div class="thumbnail" style="height:370px;">
 						<a href="/course/details/{{this.id}}" style="text-decoration:none;">
 							<img src="/{{this.courseLogo}}" class="img-responsive" style="width:100%;" alt="Image">
 							<br>
 							<div class="caption">
 								<p>Course Name : {{this.courseName}}</p>
 								<p>Course Type : {{this.type}}</p>
-								<p>Price : {{this.price}}$</p>
 								<p>Course Duration : {{this.period}} Months</p>
-								<p>Course Instructor : {{this._offeredBy}}</p>
+								<p>Price : ${{this.price}}</p>
 							</div>
 						</a>
 					</div>

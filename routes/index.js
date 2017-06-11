@@ -69,6 +69,9 @@ router.get('/', function(req, res, next) {
 
 
 
+
+
+//Course Details
 router.get('/course/:id',function(req,res,next){
 
   if(req.params.id == 1){
@@ -102,11 +105,18 @@ router.get('/course/:id',function(req,res,next){
 });
 
 
-
 router.get('/course/details/:id',function(req,res,next){
   Course
-  .findOne({_id:req.params.id},function(err,course){
-    res.render('shop/product',{course:course});
+  .findOne({_id:req.params.id},function(err,course1){
+    Course
+    .find({_offeredBy:course1._offeredBy},function(err,course2){
+      var productChunks = [];
+      var chunkSize = 4;
+      for(var i = 0; i<course2.length; i += chunkSize){
+          productChunks.push(course2.slice(i,i+chunkSize));
+      }
+      res.render('shop/product',{course1:course1,course2:productChunks});
+    });
   });
 });
 
@@ -143,9 +153,10 @@ router.post('/user/signin',passport.authenticate('local.signin',{
 
 
 
+
 //Authenticating with Facebook
 router.get('/auth/facebook',
-  passport.authenticate('facebook'));
+  passport.authenticate('facebook',{ scope: ['email'] }));
 
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/user/signup' }),
@@ -216,6 +227,8 @@ router.post('/user/profile',isLoggedIn,function(req,res,next){
  res.redirect('/user/profile');
 });
   
+
+
 
 
 

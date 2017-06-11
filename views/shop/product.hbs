@@ -2,7 +2,7 @@
 
     <div class="col-md-3 col-md-offset-1" >
 
-        <img src="/{{course.courseLogo}}" class="img-responsive"
+        <img src="/{{course1.courseLogo}}" class="img-responsive"
          style="width:100%;height:450px;border:4px solid silver;margin-top:60px;" alt="Image">
          <br><br>
          <button class="btn btn-info">${{course.price}}</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -18,20 +18,120 @@
         </h2>
 
         <ul class="list-group">
-            <li class="list-group-item list-group-item-info">Course Name : {{course.courseName}}</li>
-            <li class="list-group-item list-group-item-success">Course Type : {{course.type}}</li>
-            <li class="list-group-item list-group-item-warning">Price : ${{course.price}}</li>
-            <li class="list-group-item list-group-item-danger">Course Duration : {{course.period}} Months</li>
-            <li class="list-group-item list-group-item-success">Course Instructor : {{course._offeredBy}}</li>
+            <li class="list-group-item list-group-item-info">Course Name : {{course1.courseName}}</li>
+            <li class="list-group-item list-group-item-success">Course Type : {{course1.type}}</li>
+            <li class="list-group-item list-group-item-warning">Price : ${{course1.price}}</li>
+            <li class="list-group-item list-group-item-danger">Course Duration : {{course1.period}} Months</li>
+            <li class="list-group-item list-group-item-success">Course Instructor : {{course1._offeredBy}}</li>
 
         </ul>
         <h2 class="page-header text-center">
             Course Details
         </h2>
-        <p style="color:maroon;font-family:cursive;font-size:16px;">{{course.courseDetails}}</p>
+        <p style="color:maroon;font-family:cursive;font-size:16px;">{{course1.courseDetails}}</p>
+
+    </div>
+</div><br><br><br><br><br>
+
+
+<div class="row">
+
+    <div class="col-md-8 col-md-offset-1">
+        <h2 class="page-header" style="font-family:cursive;font-size:40px;color:dodgerblue">Prerequisites</h2>
+
+        <ul>
+            <li style="font-family:cursive;font-size:20px;color:grey">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </li>
+            <li style="font-family:cursive;font-size:20px;color:grey">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </li>
+            <li style="font-family:cursive;font-size:20px;color:grey">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </li>
+            <li style="font-family:cursive;font-size:20px;color:grey">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </li>
+           
+        </ul>
+    </div>
+    
+
+</div><br><br><br><br><br>
+
+<div class="row">
+
+    <div class="col-md-12 col-md-offset-1">
+        <h2 class="page-header" style="font-family:cursive;font-size:40px;color:dodgerblue">Curriculum For this Course</h2>
+        <h6  style="font-family:cursive;font-size:20px;color:dodgerblue">For First Month</h6><br><br>
+        <table class="table">
+            
+                <tr class="table ">
+                    <th class="col-md-2">Topic</th>
+                    <th class="col-md-2">Covered In</th>
+                    <th class="col-md-6">Description</th>
+                </tr>
+                <tr class="table">
+                    <td class="col-md-2">Lorem Ipsum</td>
+                    <td class="col-md-2">Week1</td>
+                    <td class="col-md-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                </tr>
+                <tr class="table">
+                    <td class="col-md-2">Lorem Ipsum</td>
+                    <td class="col-md-2">Week2</td>
+                    <td class="col-md-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                </tr>
+                <tr class="table">
+                    <td class="col-md-2">Lorem Ipsum</td>
+                    <td class="col-md-2">Week3</td>
+                    <td class="col-md-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                </tr>
+                <tr class="table">
+                    <td class="col-md-2">Lorem Ipsum</td>
+                    <td class="col-md-2">Week4</td>
+                    <td class="col-md-6">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</td>
+                </tr>
+
+        </table>
 
     </div>
 
 
+</div><br><br><br><br><br>
+
+<div class="row">
+
+    <div class="col-md-offset-1 ">
+		
+
+		<div class="container-fluid bg-3">    
+			<h2 style="color:blueviolet;font-family:cursive">More Courses By {{course1._offeredBy}}</h2><br>
+
+			{{# each course2}}
+			<div class="row">
+
+			{{# each this}}
+				<div class="col-sm-3">
+					<div class="thumbnail" style="height:370px;">
+						<a href="/course/details/{{this.id}}" style="text-decoration:none;">
+							<img src="/{{this.courseLogo}}" class="img-responsive" style="width:100%;" alt="Image">
+							<br>
+							<div class="caption">
+								<p>Course Name : {{this.courseName}}</p>
+								<p>Course Type : {{this.type}}</p>
+								<p>Course Duration : {{this.period}} Months</p>
+								<p>Price : ${{this.price}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			{{/each}}
+				
+			</div>
+			{{/each}}
+			
+		</div><br>
+
+	</div>
 
 </div>

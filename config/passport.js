@@ -84,9 +84,12 @@ passport.use(new facebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
     callbackURL: "http://localhost:3000/auth/facebook/callback",
+    profileFields: ['email']
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+        user.email = profile._json.email;
+        user.save()
       return cb(err, user);
     });
   }
