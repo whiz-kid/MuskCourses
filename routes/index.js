@@ -1,4 +1,5 @@
 var Course = require('../models/course');
+var Cart = require('../models/cart');
 var User = require('../models/user');
 var express = require('express');
 var router = express.Router();
@@ -190,7 +191,15 @@ router.get('/user/profile',isLoggedIn,function(req,res,next){
     for(var i = 0; i<course.length; i += chunkSize){
         productChunks.push(course.slice(i,i+chunkSize));
     }
-    res.render('user/profile',{csrfToken:req.csrfToken(),course:productChunks});
+    Cart
+    .find({email:req.user.email},function(err,cart){
+      var cartChunks = [];
+      var chunkSize = 4;
+      for(var i = 0; i<cart.length; i += chunkSize){
+          cartChunks.push(cart.slice(i,i+chunkSize));
+      }
+      res.render('user/profile',{csrfToken:req.csrfToken(),course:productChunks,cart:cartChunks});
+    })
   });
 });
 
@@ -228,7 +237,24 @@ router.post('/user/profile',isLoggedIn,function(req,res,next){
 });
   
 
-
+//Cart Routes
+router.get('/cart/add/:coursename',isLoggedIn,function(req,res,next){
+  newCart = new Cart();
+  newCart.courseName = req.params.coursename;
+  newCart.email = req.user.email;
+  newCart.status = "Not Finished Yet";
+  Course
+  .findOne({courseName:req.params.coursename},function(err,course){
+    newCart.duration = course.period;
+    newCart.courseLogo = course.courseLogo;
+    newCart.save(function(err,cart){
+    if(err){
+      console.log(err);
+    }
+    res.redirect('/user/profile');
+    });
+  });
+});
 
 
 

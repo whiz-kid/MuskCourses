@@ -6,6 +6,45 @@
 </div>
 <br><br><br><br>
 <br><br><br><br>
+
+<div class="row">
+
+    <div class="col-md-offset-2 ">
+		
+
+		<div class="container-fluid bg-3">    
+			<h2 style="color:blueviolet;font-family:cursive">Courses Taken By You</h2><br>
+
+			{{# each cart}}
+			<div class="row">
+
+			{{# each this}}
+				<div class="col-sm-3">
+					<div class="thumbnail" style="height:370px;">
+						<a href="/course/details/{{this.id}}" style="text-decoration:none;">
+							<img src="/{{this.courseLogo}}" class="img-responsive" style="width:100%;" alt="Image">
+							<br>
+							<div class="caption">
+								<p>Course Name : {{this.courseName}}</p>
+								<p>Start Time : {{this.startTime}}</p>
+								<p>Course Duration : {{this.duration}} Months</p>
+								<p>Status: {{this.status}}</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			{{/each}}
+				
+			</div>
+			{{/each}}
+			
+		</div><br>
+
+	</div>
+
+</div>
+
+<br><br><br><br>
 <div class="row">
 
     <div class="col-md-offset-2 ">
@@ -43,8 +82,6 @@
 
 </div>
 
-
-</div>
 
 <br><br><br><br>
 <div class="row" id="profile">

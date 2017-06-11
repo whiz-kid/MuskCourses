@@ -7,7 +7,8 @@ var Course = require('./course')
 var userSchema = Schema({
     email:{type:String},
     password:{type:String},
-    courseOffered:[{type:Schema.Types.ObjectId,ref:'Course'}]
+    courseOffered:[{type:Schema.Types.ObjectId,ref:'Course'}],
+    courseRegistered: [{type:String}]
 });
 
 userSchema.plugin(findOrCreate);
