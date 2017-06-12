@@ -1,0 +1,25 @@
+var cartSchema = Schema({
+   courseName:String,
+   courseLogo:String,
+   email:String,
+   startTime:{type:Date,default:Date.now()},
+   duration:Number,
+   status:String
+});
+
+var courseSchema = Schema({
+    courseLogo:String,
+    courseName:String,
+    courseDetails:String,
+    period:Number,
+    price:Number,
+    type:String,
+    _offeredBy:String
+});
+
+var userSchema = Schema({
+    email:{type:String},
+    password:{type:String},
+    courseOffered:[{type:Schema.Types.ObjectId,ref:'Course'}],
+    courseRegistered: [{type:String}]
+});
