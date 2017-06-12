@@ -1,7 +1,7 @@
 MuskCourses is a website for educating people through online courses.
 
 Command for starting the server:
--->> nmp start
+-->> npm start
 
 
 Requirements:
