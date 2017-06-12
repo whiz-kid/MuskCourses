@@ -121,7 +121,10 @@ router.get('/course/details/:id',function(req,res,next){
   });
 });
 
+router.get('/user/course/details/:id',function(req,res,next){
 
+  res.render('shop/coursetaken.hbs');
+});
 
 
 
